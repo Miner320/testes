@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Post an inline text message
+on:
+  push:
+    branches:
+      - main
+jobs:
+  run:
+    name: Leave a kind message after updates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit made
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
+              "text": "New commit pushed: ${{ github.event.head_commit.message }} by ${{ github.event.head_commit.author.name }}"
+            }
