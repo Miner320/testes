@@ -8,7 +8,8 @@ jobs:
     name: Send a message for PR
     runs-on: ubuntu-latest
     steps:
-      - uses: slackapi/slack-github-action@v2.1.1
+      name: Mensagem para PR
+      uses: slackapi/slack-github-action@v2.1.1
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
