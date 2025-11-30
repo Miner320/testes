@@ -1,0 +1,19 @@
+name: Message for PR   
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  run:
+    name: Send a message for PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
+              "text": "News on the PR: ${{ github.event.action }}"
+            
