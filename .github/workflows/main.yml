@@ -30,6 +30,7 @@ jobs:
                     {
                       "title": "Ação"
                       "value": "${{github.event.action}}"
+                      "short": true
                     },
                     {
                       "title": "Branch",
