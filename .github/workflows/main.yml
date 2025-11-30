@@ -16,4 +16,4 @@ jobs:
             {
               "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
               "text": "News on the PR: ${{ github.event.action }}"
-            
+            }
