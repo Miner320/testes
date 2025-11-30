@@ -1,4 +1,5 @@
-name: Message for PR   
+name: Message for PR
+
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
@@ -8,13 +9,13 @@ jobs:
     name: Send a message for PR
     runs-on: ubuntu-latest
     steps:
-      name: Mensagem para PR
-      uses: slackapi/slack-github-action@v2.1.1
+      - name: Mensagem para PR
+        uses: slackapi/slack-github-action@v2.1.1
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
           payload: |
-              {
+            {
               "text": ":bell: *Notícias de PR!*",
               "attachments": [
                 {
